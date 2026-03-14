@@ -2,12 +2,12 @@
 // @author 
 // @description 刮削：支持，弹幕：支持，嗅探：支持
 // @dependencies: axios, cheerio
-// @version 1.0.0
+// @version 1.0.1
 // @downloadURL https://gh-proxy.org/https://github.com/Silent1566/OmniBox-Spider/raw/refs/heads/main/影视/网盘/二小.js
 
 // 引入 OmniBox SDK
 const OmniBox = require("omnibox_sdk");
-// 引入 cheerio(用于 HTML 解析)
+// 引入 cheerio(用于 HTML 解析) 
 let cheerio;
 try {
   cheerio = require("cheerio");
@@ -25,12 +25,12 @@ const fs = require("fs");
 
 // ==================== 配置区域 ====================
 // 网站地址(可以通过环境变量配置,支持多个域名用;分割)
-const WEB_SITE_CONFIG = process.env.WEB_SITE_MUOU || "https://wexwp.cc;https://www.erixaopan.fun;https://erxiaofn.click;https://erxiaofn.site;http://2xiaopan.fun;https://erixaopan.fun;";
+const WEB_SITE_CONFIG = process.env.WEB_SITE_MUOU || "https://www.erixaopan.fun;https://erxiaofn.click;https://erxiaofn.site;http://2xiaopan.fun;https://erixaopan.fun;https://wexwp.cc;";
 const WEB_SITES = WEB_SITE_CONFIG.split(';').map(url => url.trim()).filter(url => url);
 // 筛选配置: 环境变量 -> 本地文件 -> 远程链接
 const FILTERS_PATH_REMOTE = "https://gh-proxy.org/https://github.com/Silent1566/OmniBox-Spider/blob/main/%E9%85%8D%E7%BD%AE/%E7%AD%9B%E9%80%89/erxiao.json";
 const FILTERS_PATH_LOCAL = "/app/static/js/erxiao.json";
-const FILTERS = process.env.FILTERS_WOGG || (fs.existsSync(FILTERS_PATH_LOCAL)
+const FILTERS = process.env.FILTERS_ERXIAO || (fs.existsSync(FILTERS_PATH_LOCAL)
   ? fs.readFileSync(FILTERS_PATH_LOCAL, "utf-8")
   : FILTERS_PATH_REMOTE);
 // 读取环境变量:支持多个网盘类型,用分号分割
